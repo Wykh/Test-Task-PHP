@@ -1,0 +1,34 @@
+
+<html>
+<head>
+	<meta charset=utf-8>
+<script>
+    function leapYear(str) {
+        if (str.length == 0) {
+            document.getElementById("txtHint").innerHTML = "";
+            return;
+        }
+        else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("txtHint").innerHTML = this.response;
+            }
+        };
+        xmlhttp.open("GET", "task1.php?q=" + str, true);
+        xmlhttp.send();
+       }
+    }
+</script>
+</head>
+<body>
+
+<h1> Задание №1 </h1>
+<p><b>Начинайте вводить год в поле ниже :</b></p>
+<form>
+Значение: <input type="text" onkeyup="leapYear(this.value)">
+</form>
+<p>Это високосный год? <span id="txtHint"></span></p>
+
+</body>
+</html>
